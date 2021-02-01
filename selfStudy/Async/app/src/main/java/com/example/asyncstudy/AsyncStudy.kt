@@ -25,4 +25,9 @@ package com.example.asyncstudy
 *   Async 장점
 *       - Main Thread를 기다리게 할 필요가 없다
 *       - 네트워크 작업 시 유용
+*
+*   Async 단점
+*       - 재사용 불가
+*       - 구현된 Activity 종료 되는 경우 같이 따라서 종료되지 않는다
+*       - AsyncTask는 하나만 실행 될 수 있다 -> 여러 개 만들면 첫 번째 AsyncTask 끝날 때까지 두 번째 AsyncTask는 기다리게 된다 (병렬처리X)
 * */

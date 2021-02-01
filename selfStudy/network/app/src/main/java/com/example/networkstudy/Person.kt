@@ -1,0 +1,10 @@
+package com.example.networkstudy
+
+import java.io.Serializable
+
+class Person (
+    var id : Int? = null,
+    var name : String? = null,
+    var age: Int? = null,
+    var intro : String? = null
+) : Serializable
