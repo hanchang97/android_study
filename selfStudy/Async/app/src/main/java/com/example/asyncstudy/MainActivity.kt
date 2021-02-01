@@ -67,6 +67,8 @@ class BackgroundAsyncTask(
             }else{
                 publishProgress(percent) // onProgressUpdate에 전달 -> onProgressUpdate의 values에 전달!
             }
+
+            // 변화되는 모습 보기 위해 지연 설정
             try{
                 Thread.sleep(100)
             }catch(e : Exception){
