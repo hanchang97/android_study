@@ -90,7 +90,7 @@
 
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/et_todo"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:inputType="text"

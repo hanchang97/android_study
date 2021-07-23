@@ -4,13 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todo_list.databinding.ActivityMainBinding
-import com.example.todo_list.databinding.ItemTodoBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mainBinding: ActivityMainBinding
 
-    private val data = arrayListOf<TodoData>()
+    private val dataList = arrayListOf<TodoData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,14 +18,39 @@ class MainActivity : AppCompatActivity() {
         val view = mainBinding.root
         setContentView(view)
 
-        data.add(TodoData("과제", false))
-        data.add(TodoData("은행가기", false))
+        /*dataList.add(TodoData("과제", false))
+        dataList.add(TodoData("은행가기", false))*/
 
         mainBinding.recyclerviewTodo.layoutManager = LinearLayoutManager(this)
-        mainBinding.recyclerviewTodo.adapter = TodoRecyclerAdpater(data)
+        mainBinding.recyclerviewTodo.adapter = TodoRecyclerAdpater(dataList,
+                onClickDeleteIcon = {
+                    deleteTodo(it)
+                },
+                onClickItem = {
+                    toggleTodo(it)
+                }
+            )
         mainBinding.recyclerviewTodo.addItemDecoration(TodoRecyclerViewDecoration(10))
 
+        mainBinding.btnAdd.setOnClickListener {
+            addTodo()
+        }
+    }
 
+    fun addTodo(){  // 리스트 추가
+        val todo = TodoData(mainBinding.etTodo.text.toString())
+        dataList.add(todo)
+        mainBinding.recyclerviewTodo.adapter?.notifyDataSetChanged()
+    }
+
+    fun deleteTodo(todo : TodoData){ // 삭제 기능
+        dataList.remove(todo)
+        mainBinding.recyclerviewTodo.adapter?.notifyDataSetChanged()
+    }
+
+    fun toggleTodo(todo: TodoData){  // isDone을 바꾼다
+        todo.isDone = !todo.isDone
+        mainBinding.recyclerviewTodo.adapter?.notifyDataSetChanged()
     }
 }
 
