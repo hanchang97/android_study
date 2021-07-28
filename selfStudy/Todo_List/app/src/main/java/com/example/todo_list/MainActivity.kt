@@ -3,6 +3,7 @@ package com.example.todo_list
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todo_list.databinding.ActivityMainBinding
 
@@ -24,24 +25,32 @@ class MainActivity : AppCompatActivity() {
 
         mainBinding.recyclerviewTodo.layoutManager = LinearLayoutManager(this)
         mainBinding.recyclerviewTodo.adapter = TodoRecyclerAdpater(
-                mainViewModel.dataList,
+                emptyList(),
                 onClickDeleteIcon = {
                     mainViewModel.deleteTodo(it)
-                    mainBinding.recyclerviewTodo.adapter?.notifyDataSetChanged()
+                    //mainBinding.recyclerviewTodo.adapter?.notifyDataSetChanged()
                 },
                 onClickItem = {
                     mainViewModel.toggleTodo(it)
-                    mainBinding.recyclerviewTodo.adapter?.notifyDataSetChanged()
+                    //mainBinding.recyclerviewTodo.adapter?.notifyDataSetChanged()
                 }
             )
-        mainBinding.recyclerviewTodo.addItemDecoration(TodoRecyclerViewDecoration(10))
+
+        mainBinding.recyclerviewTodo.addItemDecoration(TodoRecyclerViewDecoration(10)) // 리사이클러뷰 아이템 간 간격 조절
 
         mainBinding.btnAdd.setOnClickListener {
             val todo = TodoData(mainBinding.etTodo.text.toString())
 
             mainViewModel.addTodo(todo)
-            mainBinding.recyclerviewTodo.adapter?.notifyDataSetChanged()
+            //mainBinding.recyclerviewTodo.adapter?.notifyDataSetChanged()
         }
+
+        //관찰 - UI 업데이트   //  첫번째 인자는 액티비티 자체
+        mainViewModel.todoLiveData.observe(this, Observer {
+            // livedata 에 저장되는 값 타입이 it
+            // 내가 만든 어댑터 클래스로 캐스팅!
+            (mainBinding.recyclerviewTodo.adapter as TodoRecyclerAdpater).setData(it)
+        })
     }
 
 //    fun addTodo(){  // 리스트 추가
