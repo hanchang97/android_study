@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private val apiKey = "81F7B6B70AE5463E31980DDB396F72DE5E6E59972A9433AC3AB7362E1AF4E940"
+    private val apiKey = "인터파크 apikey"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
