@@ -1,7 +1,7 @@
-### 도서 리뷰 & 검색 app
+### todo 추가/삭제 app
 
-- 인터파크 오픈 api를 통해 베스트 셀러 조회, 책 검색 기능 구현하기
+- recyclerview item 높이를 recyclerview가 차지하는 영역 대비 비율로 설정해보기
 
-- api 통신으로 가져온 데이터 recyclerview로 리스트화 하기
+- LiveData를 통해 할일 삭제/추가
 
-- MVVM 디자인 패턴 사용하기
+- MVVM 디자인 패턴 적용해보기
