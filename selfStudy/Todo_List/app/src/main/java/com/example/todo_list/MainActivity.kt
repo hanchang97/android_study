@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                 }
             )
 
-        mainBinding.recyclerviewTodo.addItemDecoration(TodoRecyclerViewDecoration(10)) // 리사이클러뷰 아이템 간 간격 조절
+        mainBinding.recyclerviewTodo.addItemDecoration(TodoRecyclerViewDecoration(15)) // 리사이클러뷰 아이템 간 간격 조절
 
         mainBinding.btnAdd.setOnClickListener {
             val todo = TodoData(mainBinding.etTodo.text.toString())
