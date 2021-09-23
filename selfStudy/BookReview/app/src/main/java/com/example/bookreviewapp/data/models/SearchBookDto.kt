@@ -1,4 +1,4 @@
-package com.example.bookreviewapp.bestseller.models
+package com.example.bookreviewapp.data.models
 
 import com.google.gson.annotations.SerializedName
 

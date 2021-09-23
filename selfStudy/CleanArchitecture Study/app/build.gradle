@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -48,13 +49,42 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
-    // Koin for Android
+
+    // koin DI
+    // Koin test features
+    testImplementation "io.insert-koin:koin-test:3.1.2"
+    // Koin main features for Android (Scope,ViewModel ...)
     implementation "io.insert-koin:koin-android:3.1.2"
-// Koin Android Scope features
-    implementation "io.insert-koin:koin-android-scope:3.1.2"
-// Koin Android ViewModel features
-    implementation "io.insert-koin:koin-android-viewmodel:3.1.2"
-// Koin Android Experimental features
-    implementation "io.insert-koin:koin-android-ext:3.1.2"
+    // Koin Java Compatibility
+    implementation "io.insert-koin:koin-android-compat:3.1.2"
+    // Koin for Jetpack WorkManager
+    implementation "io.insert-koin:koin-androidx-workmanager:3.1.2"
+    // Koin for Jetpack Compose
+    implementation "io.insert-koin:koin-androidx-compose:3.1.2"
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // OkHttp3
+    implementation "com.squareup.okhttp3:okhttp:4.6.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.6.0"
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3'
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+
+    // Swipe Refresh Layout
+    implementation 'com.android.support:support-v4:30.0.3'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'jp.wasabeef:glide-transformations:4.0.0'
+
 
 }

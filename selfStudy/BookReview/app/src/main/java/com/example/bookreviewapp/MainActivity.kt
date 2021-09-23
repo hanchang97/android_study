@@ -3,8 +3,8 @@ package com.example.bookreviewapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.bookreviewapp.bestseller.interfaces.BookService
-import com.example.bookreviewapp.bestseller.models.BestSellerDto
+import com.example.bookreviewapp.data.api.BookApi
+import com.example.bookreviewapp.data.models.BestSellerDto
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val bookService = retrofit.create(BookService::class.java)  //
+        val bookService = retrofit.create(BookApi::class.java)  //
 
         bookService.getBestSeller(apiKey)
             .enqueue(object: Callback<BestSellerDto>{
