@@ -29,7 +29,9 @@ class MainActivity : AppCompatActivity() {
     private var progressSubject = PublishSubject.create<Boolean>()
     // Subject 클래스는 Observable의 속성과 구독자의 속성이 모두 있다
 
-    private val disposables: CompositeDisposable = CompositeDisposable()
+    private var resultData = PublishSubject.create<String>()
+
+    private val disposables: CompositeDisposable = CompositeDisposable() // oncomplete 호출 되면 자동 dispose? -> 추가학습하기
 
 
     @SuppressLint("CheckResult")
@@ -45,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        // 통신 시 나타나는 progressbar
         progressSubject.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe{
@@ -54,9 +57,14 @@ class MainActivity : AppCompatActivity() {
                 else{
                     binding.progressbar.visibility = View.GONE
                 }
-            }.addTo(disposables)
+            }
 
-
+        // 통신 결과 갱신
+        resultData.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe{
+                binding.tvResult.text = it
+            }
 
     }
 
@@ -74,12 +82,14 @@ class MainActivity : AppCompatActivity() {
                         Log.d("api result", "result + " + it)
                     }
                     // 서버로 부터 받은 데이터 활용
+                    resultData.onNext(it.toString())
 
                 },{
                     //binding.progressbar.visibility = View.GONE
                     progressSubject.onNext(false)
                     Log.d("api result", "msg + " + it)
                     // 에러 처리
+                    resultData.onNext("올바른 id를 입력해주세요")
                 }
             )
     }
