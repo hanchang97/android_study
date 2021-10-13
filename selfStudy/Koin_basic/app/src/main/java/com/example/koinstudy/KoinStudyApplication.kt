@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.koinstudy.`object`.Student
 import com.example.koinstudy.`object`.Teacher
 import com.example.koinstudy.di.study1Module
+import com.example.koinstudy.di.study2Module
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
@@ -30,10 +31,12 @@ class KoinStudyApplication: Application(){
   //              module{   // 모듈이 여러개라면 이렇게 추가해주면 된다
 
     //            }
-
             )
-            //modules(study1Module)   //  modules 자체를 여러개로도 가능  / 주석 해제하면 오류 why??? ->
-            //Teacher, Stduent 객체 주입 선언해서 또 하면 오류 발생!!
+            //modules(study1Module)   //  modules 자체를 여러개 사용해서도 표현 가능  / but 주석 해제하면 오류 why??? ->
+            //Teacher, Stduent 객체 주입 선언해서 또 하면 오류 발생!! -> 현재 상태에서는 같은 Type 객체 구분이 안되기 때문이다!!
+
+            // -> 이를 해결하기 위해 named 메서드 사용!!
+            modules(study2Module)  // -> named 메서드를 통해 구분했음
         }
     }
 }
