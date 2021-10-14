@@ -5,6 +5,7 @@ import com.example.koinstudy.`object`.Student
 import com.example.koinstudy.`object`.Teacher
 import com.example.koinstudy.di.study1Module
 import com.example.koinstudy.di.study2Module
+import com.example.koinstudy.di.study3Module
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
@@ -37,6 +38,7 @@ class KoinStudyApplication: Application(){
 
             // -> 이를 해결하기 위해 named 메서드 사용!!
             modules(study2Module)  // -> named 메서드를 통해 구분했음
+            modules(study3Module) // get() 메서드 활용 예제
         }
     }
 }
