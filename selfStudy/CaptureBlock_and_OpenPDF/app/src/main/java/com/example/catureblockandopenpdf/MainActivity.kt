@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    val url = "https://www.clickdimensions.com/links/TestPDFfile.pdf"   // 테스트용 pdf 링크
+    //val url = "https://www.clickdimensions.com/links/TestPDFfile.pdf"   // 테스트용 pdf 링크
+    val url = "https://tuktalk.s3.ap-northeast-2.amazonaws.com/a1fd492d-429b-4184-bc8a-7406139a3f9f.pdf"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

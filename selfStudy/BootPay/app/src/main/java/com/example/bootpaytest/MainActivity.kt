@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
-    val application_id = "Android Application ID"   // 부트페이 안드로이드 어플리케이션 id  // 사이트에서 자신의 id 직접 확인하기!!
+    val application_id = "61695dbd7b5ba4002152c815"   // 부트페이 안드로이드 어플리케이션 id  // 사이트에서 자신의 id 직접 확인하기!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
