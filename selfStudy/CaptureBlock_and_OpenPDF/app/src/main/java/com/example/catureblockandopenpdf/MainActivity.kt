@@ -1,6 +1,7 @@
 package com.example.catureblockandopenpdf
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -39,6 +40,12 @@ class MainActivity : AppCompatActivity() {
         binding.webView.loadUrl("https://docs.google.com/gview?embedded=true&url=$url")
 
         // 로드 시작~ 로드 완료 사이 progressbar 구현을 위해 webView 이벤트 컨트롤 해보기
+
+
+        binding.btnPdfOpen.setOnClickListener {
+            val intent = Intent(this, PdfOpen2Activity::class.java)
+            startActivity(intent)
+        }
     }
 
     inner class WebViewClientCustom : WebViewClient(){
