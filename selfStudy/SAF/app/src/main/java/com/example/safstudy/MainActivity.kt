@@ -22,7 +22,6 @@ import com.example.safstudy.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
 
-
     private lateinit var binding : ActivityMainBinding
 
     val READ_REQUEST_CODE_IAMGE = 2
@@ -51,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, READ_REQUEST_CODE_PDF)   // 4
         }
 
+        // startActivityForResult 현재 deprecated 되었음!!!
 
 
     }
