@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         binding.btn2.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK) // 갤러리로 이동
             //val intent = Intent(Intent.ACTION_GET_CONTENT)  // 전체 이미지 관련 파일 선택 가능한 화면으로 이동
-            //intent.type = MediaStore.Images.Media.CONTENT_TYPE
             intent.type = "image/*"
             getContent.launch(intent)
         }
