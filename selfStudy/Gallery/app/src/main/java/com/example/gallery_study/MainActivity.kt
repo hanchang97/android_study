@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         setButton1()
         setButton2()
+        setButton3()
     }
 
     fun setButton1(){
@@ -37,15 +38,24 @@ class MainActivity : AppCompatActivity() {
 
     fun setButton2(){  // registerForActivityResult를 버튼의 setOnClickListener 안에서 호출 하면 오류 발생!! 초기화 시점이 중요한 듯
         var getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            Log.d("AppData", "data : ${it.data}")
-            binding.iv.setImageURI(it.data?.data)
+            if(it.resultCode == RESULT_OK){
+                Log.d("AppTest", "data : ${it.data}")
+                binding.iv.setImageURI(it.data?.data)
+            }
+            else{
+                Log.d("AppTest", "btn2 사진 선택 x")
+            }
         }
 
         binding.btn2.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK) // 갤러리로 이동
             //val intent = Intent(Intent.ACTION_GET_CONTENT)  // 전체 이미지 관련 파일 선택 가능한 화면으로 이동
             intent.type = "image/*"
-            getContent.launch(intent)
+
+            val chooser: Intent = Intent.createChooser(intent, "Chooser Test")
+
+            //getContent.launch(intent)
+            getContent.launch(chooser)
         }
     }
 
@@ -70,5 +80,48 @@ class MainActivity : AppCompatActivity() {
             Log.d("AppTest", "photo uri : $fullPhotoUri")
             binding.iv.setImageURI(fullPhotoUri)
         }
+        else{
+            Log.d("AppTest", "사진 선택 x")
+        }
+    }
+
+    fun setButton3(){
+        //val sendIntent = Intent(Intent.ACTION_SEND)
+        //val sendIntent = Intent(Intent.ACTION_GET_CONTENT)
+        val sendIntent = Intent(Intent.ACTION_PICK)
+        sendIntent.type = "image/*"
+
+        //val title: String = resources.getString(R.string.chooser_title)
+        val chooser: Intent = Intent.createChooser(sendIntent, "CHOOSER TEST")
+
+        binding.btn3.setOnClickListener {
+            if (sendIntent.resolveActivity(packageManager) != null) {
+                //startActivity(chooser)
+                startActivityForResult(chooser, REQUEST_IMAGE_GET)
+            }
+            else{
+                Log.d("AppTest", "nothing to execute")
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("AppTest", "$this - onResume")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("AppTest", "$this - onStart")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("AppTest", "$this - onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("AppTest", "$this - onStop")
     }
 }

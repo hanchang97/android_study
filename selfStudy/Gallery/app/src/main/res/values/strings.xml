@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">gallery_study</string>
+    <string name="chooser_title">Share</string>
 </resources>
