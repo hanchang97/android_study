@@ -107,11 +107,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setButton4() {
+        val getContent =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()
+            ) {
+                if (it.resultCode == RESULT_OK) {
+                    Log.d("AppTest", "data : ${it.data}")
+                    binding.iv.setImageURI(it.data?.data)
+                } else {
+                    Log.d("AppTest", "btn4 사진 선택 x")
+                }
+            }
+
         val requestPermissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestPermission()
             ) { isGranted: Boolean ->
                 if (isGranted) {
                     Log.d("AppTest", "권한 승인 ok")
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = "image/*"
+                    getContent.launch(Intent.createChooser(intent, "Chooser Test"))
                 } else {
                     Snackbar.make(binding.root, "권한이 승인되지 않았습니다", Snackbar.LENGTH_SHORT ).show()
                 }
