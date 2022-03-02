@@ -27,6 +27,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        var a = Integer.toHexString(0)
+        var b = Integer.toHexString(16)
+        var c = Integer.toHexString(100)
+
+        if(a.length == 1) a = "0" + a
+        if(b.length == 1) a = "0" + b
+        if(c.length == 1) a = "0" + c
+
+        Log.d("AppTest", "$a $b $c")
+
+        ////////////
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -85,8 +97,8 @@ class MainActivity : AppCompatActivity() {
             //gradientDrawable.setColor(ContextCompat.getColor(this, R.color.purple_200))
             gradientDrawable.setColor(Color.parseColor("#BB86FC"))
 
-            dynamicImageView.x = 350f // 처음 구한 전체 뷰의 값과 같은 단위 인듯 -> 해상도??
-            dynamicImageView.y = 200f
+            dynamicImageView.x = 600f // 처음 구한 전체 뷰의 값과 같은 단위 인듯 -> 해상도??
+            dynamicImageView.y = 0f
             //dynamicImageView.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.purple_700))
             //dynamicImageView.backgroundTintMode = PorterDuff.Mode.SCREEN
 
@@ -107,7 +119,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("AppTest", "${Integer.toHexString(187)}${Integer.toHexString(134)}${Integer.toHexString(252)}")
             }
 
-            binding.constraintLayoutMain.addView(dynamicImageView)
+            binding.frameLayout.addView(dynamicImageView)
         }
     }
 
