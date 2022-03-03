@@ -95,12 +95,13 @@ class MainActivity : AppCompatActivity() {
 
             var gradientDrawable = dynamicImageView.background as GradientDrawable
             //gradientDrawable.setColor(ContextCompat.getColor(this, R.color.purple_200))
-            gradientDrawable.setColor(Color.parseColor("#BB86FC"))
+            gradientDrawable.setColor(Color.parseColor("#1ABB86FC"))
 
-            dynamicImageView.x = 600f // 처음 구한 전체 뷰의 값과 같은 단위 인듯 -> 해상도??
+            dynamicImageView.x = 400f // 처음 구한 전체 뷰의 값과 같은 단위 인듯 -> 해상도??
             dynamicImageView.y = 0f
             //dynamicImageView.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.purple_700))
             //dynamicImageView.backgroundTintMode = PorterDuff.Mode.SCREEN
+            //dynamicImageView.alpha = 0.1f
 
             dynamicImageView.setOnClickListener {
                 var gradientDrawable = dynamicImageView.background as GradientDrawable
