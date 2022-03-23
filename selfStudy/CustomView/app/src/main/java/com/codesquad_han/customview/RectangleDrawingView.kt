@@ -9,7 +9,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 
-private const val TAG = "RectangleDrawingView"
+private const val TAG = "AppTest"
 
 class RectangleDrawingView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -37,6 +37,10 @@ class RectangleDrawingView @JvmOverloads constructor(
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val currentP = PointF(event.x, event.y)
         var action = ""
+
+        var pointCount = event.pointerCount
+        Log.d(TAG, "pointerCount = $pointCount")
+
         when (event.action){
             MotionEvent.ACTION_DOWN ->{
                 action = "ACTION_DOWN"
@@ -59,7 +63,19 @@ class RectangleDrawingView @JvmOverloads constructor(
                 currentRectanglePoint = null
             }
         }
-        Log.i(TAG, "$action at x = ${currentP.x}, y = ${currentP.y}")
+
+        //Log.i(TAG, "$action at x = ${currentP.x}, y = ${currentP.y}")
+        when(pointCount){
+            1 -> {
+                Log.i(TAG, "$action/ pointer1/  x = ${event.getX(0)}, y = ${event.getY(0)}")
+                Log.i(TAG, "$action/ pointer2/  x =  , y = ")
+            }
+            2 -> {
+                Log.i(TAG, "$action/ pointer1/  x = ${event.getX(0)}, y = ${event.getY(0)}")
+                Log.i(TAG, "$action/ pointer2/  x = ${event.getX(1)}, y = ${event.getY(1)}")
+            }
+        }
+
 
         return true
     }
