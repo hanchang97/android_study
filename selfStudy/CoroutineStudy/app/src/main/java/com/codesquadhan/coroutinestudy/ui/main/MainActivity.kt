@@ -4,17 +4,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.codesquadhan.coroutinestudy.R
-import com.codesquadhan.coroutinestudy.common.RetrofitBuilder
+import com.codesquadhan.coroutinestudy.data.repository.ImageSearchRepository
 import com.codesquadhan.coroutinestudy.databinding.ActivityMainBinding
+import com.codesquadhan.coroutinestudy.ui.main.viewModel.ImageSearchViewModel
+import com.codesquadhan.coroutinestudy.ui.main.viewModel.ImageSearchViewModelFactory
 
 const val TAG = "AppTest"
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: ImageSearchViewModel by viewModels()
+    private lateinit var viewModel: ImageSearchViewModel
 
     private lateinit var adpater: ImagesAdapter
 
@@ -23,6 +25,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val imageSearchRepository = ImageSearchRepository()
+        val imageSearchviewModelFactory = ImageSearchViewModelFactory(imageSearchRepository)
+        viewModel = ViewModelProvider(this, imageSearchviewModelFactory).get(ImageSearchViewModel::class.java)
 
         setRv()
         setBtn()
