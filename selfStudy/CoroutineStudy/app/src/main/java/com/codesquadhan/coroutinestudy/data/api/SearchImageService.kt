@@ -8,6 +8,7 @@ import retrofit2.http.Query
 
 interface SearchImageService {
 
+    /*
     @GET(
         "photos/random?" +
                 "client_id=${Key.UNSPLASH_ACCESS_KEY}" +
@@ -16,6 +17,17 @@ interface SearchImageService {
     suspend fun getImages(
         @Query("query") query: String?
     ) : Response<List<ImageSearchResponse>>
+    */
+
+
+    @GET(
+        "photos/random?" +
+                "client_id=${Key.UNSPLASH_ACCESS_KEY}" +
+                "&count=30"
+    )
+    suspend fun getImages(
+        @Query("query") query: String?
+    ): List<ImageSearchResponse>
 }
 
 

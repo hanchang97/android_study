@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.codesquadhan.coroutinestudy.data.repository.ImageSearchRepository
 import com.codesquadhan.coroutinestudy.databinding.ActivityMainBinding
 import com.codesquadhan.coroutinestudy.ui.main.viewModel.ImageSearchViewModel
 import com.codesquadhan.coroutinestudy.ui.main.viewModel.ImageSearchViewModelFactory
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 const val TAG = "AppTest"
 
@@ -19,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: ImageSearchViewModel
 
     private lateinit var adpater: ImagesAdapter
+    private lateinit var pagingAdapter: ImagesPagingAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,22 +41,33 @@ class MainActivity : AppCompatActivity() {
 
     fun setRv(){
         adpater = ImagesAdapter()
-        binding.recycelrView.adapter = adpater
+        pagingAdapter = ImagesPagingAdapter()
+
+        binding.recycelrView.adapter = pagingAdapter
         binding.recycelrView.layoutManager = GridLayoutManager(this, 3)
     }
 
     fun setBtn(){
         binding.btnSearch.setOnClickListener {
-            val query = binding.editText.text.toString()
-            viewModel.searchImage(query)
+            val searchQuery = binding.editText.text.toString()
+            viewModel.sendSearchQuery(searchQuery)
         }
     }
 
     fun setImages(){
-        viewModel.images.observe(this){
+        /*viewModel.images.observe(this){
             Log.d(TAG, "${it.size}")
             adpater.submitList(it.toList())
+        }*/
+
+        lifecycleScope.launch {
+            viewModel.imageFlow
+                .collectLatest { imageResponse ->
+                    pagingAdapter.submitData(imageResponse)
+                }
         }
+
+
     }
 
 
