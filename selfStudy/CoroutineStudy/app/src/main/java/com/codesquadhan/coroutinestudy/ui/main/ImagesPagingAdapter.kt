@@ -10,9 +10,12 @@ import com.codesquadhan.coroutinestudy.R
 import com.codesquadhan.coroutinestudy.databinding.ItemImagesBinding
 import com.codesquadhan.coroutinestudy.model.ImageSearchResponse
 
-class ImagesPagingAdapter : PagingDataAdapter<ImageSearchResponse, ImagesPagingAdapter.ImageViewHolder>(comparator) {
+class ImagesPagingAdapter : PagingDataAdapter<ImageSearchResponse, ImagesPagingAdapter.ImageViewHolder>(diffUtil) {
 
     // 사용자가 로드된 데이터의 끝까지 스크롤할 때 어댑터가 자동으로 다음 데이터를 요청
+    // paging 라이브러에서 제공해주는 PaingData를 나타내주기 위한 어댑터
+
+    // PagingDataAdapter에 리스너를 등록하여 현재 상태에 관한 정보를 수신하고 그에 따라 UI를 업데이트할 수 있다
 
     class ImageViewHolder(val binding: ItemImagesBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -41,7 +44,7 @@ class ImagesPagingAdapter : PagingDataAdapter<ImageSearchResponse, ImagesPagingA
 
 
     companion object {
-        val comparator = object : DiffUtil.ItemCallback<ImageSearchResponse>() {
+        val diffUtil = object : DiffUtil.ItemCallback<ImageSearchResponse>() {
             override fun areItemsTheSame(
                 oldItem: ImageSearchResponse,
                 newItem: ImageSearchResponse

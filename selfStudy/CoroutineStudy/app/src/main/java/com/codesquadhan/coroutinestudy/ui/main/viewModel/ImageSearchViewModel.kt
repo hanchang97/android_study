@@ -34,7 +34,7 @@ class ImageSearchViewModel(private val imageSearchRepository : ImageSearchReposi
 
     fun sendSearchQuery(searchQuery: String) {  // 사용자가 입력한 문자열을 queryFlow에 추가,  버튼 누를 시 추가
         viewModelScope.launch {
-            queryFlow.emit(searchQuery)
+            queryFlow.emit(searchQuery)  // emit =>
         }
     }
 

@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.imageFlow
                 .collectLatest { imageResponse ->
-                    pagingAdapter.submitData(imageResponse)
+                    pagingAdapter.submitData(imageResponse)   // imageResponse = PagingData<ImageSearchResponse>
                 }
         }
 
