@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.codesquadhan.coroutinestudy.data.repository.ImageSearchRepository
 import com.codesquadhan.coroutinestudy.databinding.ActivityMainBinding
@@ -44,7 +46,15 @@ class MainActivity : AppCompatActivity() {
         pagingAdapter = ImagesPagingAdapter()
 
         binding.recycelrView.adapter = pagingAdapter
-        binding.recycelrView.layoutManager = GridLayoutManager(this, 3)
+        binding.recycelrView.layoutManager = GridLayoutManager(this, 2)
+
+        pagingAdapter.addLoadStateListener { combinedLoadStates ->
+            binding.progressBar.isVisible = combinedLoadStates.source.refresh is LoadState.Loading
+
+            if(combinedLoadStates.source.refresh is LoadState.Error){
+                Log.d("AppTest", "loading error")
+            }
+        }
     }
 
     fun setBtn(){

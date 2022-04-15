@@ -32,7 +32,7 @@ class ImagesPagingAdapter : PagingDataAdapter<ImageSearchResponse, ImagesPagingA
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_images, parent, false)
 
         var params = view.layoutParams
-        params.width = parent.measuredWidth / 3    // 아이템뷰의 크기를 리사이클러뷰 크기 대비 비율로 지정이 가능
+        params.width = parent.measuredWidth / 4   // 아이템뷰의 크기를 리사이클러뷰 크기 대비 비율로 지정이 가능
         params.height = params.width
 
         return ImageViewHolder(ItemImagesBinding.bind(view))
