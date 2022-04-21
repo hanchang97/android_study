@@ -34,9 +34,9 @@ abstract class LoggingDatabaseModule {
 abstract class LoggingInMemoryModule {
 
     @InMemoryLogger
-    @ActivityScoped
+    @ActivityScoped   // Module 에서 Install 한 범위를 벗어날 수 없다!!
     @Binds
-    abstract fun bindInMemoryLogger(impl: LoggerInMemoryDataSource): LoggerDataSource
+    abstract fun bindInMemoryLogger(impl: LoggerInMemoryDataSource): LoggerDataSource  // LoggerInMemoryDataSource 에서 객체를 생성해야 한다고 알려주는 것!!!
 }
 
 

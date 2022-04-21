@@ -21,3 +21,5 @@ class LoggerInMemoryDataSource @Inject constructor() : LoggerDataSource {  // Hi
         logs.clear()
     }
 }
+
+// 이 방식은 앱 실행중에만 기록 남고, 껐다 다시 키면 사라짐!!!

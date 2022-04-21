@@ -29,7 +29,7 @@ import javax.inject.Singleton
 
 // 애플리케이션 컨테이너에서 항상 동일한 LoggerLocalDataSource 인스턴스를 제공하도록 하기 위해 클래스에 @Singleton 주석을 추가합니다.
 
-@Singleton
+@Singleton  // Singleton 으로 스코프 지정
 class LoggerLocalDataSource @Inject constructor(private val logDao: LogDao): LoggerDataSource {
 
     // LogDao 는 인터페이스!!!! -> 인터페이스에는 생성자가 없으므로 인터페이스에 @Inject 어노테이션을 달 수 없다 -> Hilt 에서는 어떻게 처리????
