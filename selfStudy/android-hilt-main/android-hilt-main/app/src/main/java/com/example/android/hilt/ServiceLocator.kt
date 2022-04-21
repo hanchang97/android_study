@@ -45,3 +45,6 @@ class ServiceLocator(applicationContext: Context) {
 
 // ServiceLocator는 호출될 때마다 항상 동일한 LoggerLocalDataSource 인스턴스를 반환합니다
 // Hilt에서는 이를 Singletone 으로 처리
+
+// @@@
+// Hilt로 DI를 하면서 ServiceLocator 클래스는 사용을 더이상 하지 않아도 됨

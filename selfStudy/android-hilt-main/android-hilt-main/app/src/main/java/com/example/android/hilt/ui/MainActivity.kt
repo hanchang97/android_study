@@ -34,7 +34,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     //private lateinit var navigator: AppNavigator
-    @Inject lateinit var navigator: AppNavigator
+    @Inject lateinit var navigator: AppNavigator  // MainActivity 에서 주입을 하므로 AppNavigatorImpl 의 activity는 현재 MainActivity 인 듯!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

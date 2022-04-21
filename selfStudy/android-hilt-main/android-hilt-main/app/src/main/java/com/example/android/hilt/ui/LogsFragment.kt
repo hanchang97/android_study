@@ -28,7 +28,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.hilt.LogApplication
 import com.example.android.hilt.R
 import com.example.android.hilt.data.Log
+import com.example.android.hilt.data.LoggerDataSource
 import com.example.android.hilt.data.LoggerLocalDataSource
+import com.example.android.hilt.di.InMemoryLogger
 import com.example.android.hilt.util.DateFormatter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -50,7 +52,11 @@ class LogsFragment : Fragment() {
    /* private lateinit var logger: LoggerLocalDataSource
     private lateinit var dateFormatter: DateFormatter*/  // 기존 코드
 
-    @Inject lateinit var logger: LoggerLocalDataSource
+
+    //@Inject lateinit var logger: LoggerLocalDataSource
+    @InMemoryLogger
+    @Inject lateinit var logger: LoggerDataSource // -> LoggerInMemoryDataSource 인스턴스 삽입을 위해  InMemoryLogger  Qualifier를 사용해준다!!!!
+
     @Inject lateinit var dateFormatter: DateFormatter  // Hilt   ,   private 한 필드에는 주입되지 않는다!!!!
 
 

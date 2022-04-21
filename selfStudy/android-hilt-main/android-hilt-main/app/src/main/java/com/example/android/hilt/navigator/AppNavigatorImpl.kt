@@ -27,6 +27,10 @@ import javax.inject.Inject
  */
 class AppNavigatorImpl @Inject constructor(private val activity: FragmentActivity) : AppNavigator {
 
+        // FragmentActivity의 주입은???
+        // AppNavigator 인스턴스가 Activity 컨테이너에서 제공되므로 FragmentActivity가 생성자에서 사용 가능하게 된다. -> ?
+
+
     override fun navigateTo(screen: Screens) {
         val fragment = when (screen) {
             Screens.BUTTONS -> ButtonsFragment()

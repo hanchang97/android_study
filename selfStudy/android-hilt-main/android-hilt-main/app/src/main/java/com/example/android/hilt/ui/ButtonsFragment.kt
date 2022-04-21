@@ -25,17 +25,28 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.android.hilt.LogApplication
 import com.example.android.hilt.R
+import com.example.android.hilt.data.LoggerDataSource
 import com.example.android.hilt.data.LoggerLocalDataSource
+import com.example.android.hilt.di.InMemoryLogger
 import com.example.android.hilt.navigator.AppNavigator
 import com.example.android.hilt.navigator.Screens
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * Fragment that displays buttons whose interactions are recorded.
  */
+
+@AndroidEntryPoint
 class ButtonsFragment : Fragment() {
 
-    private lateinit var logger: LoggerLocalDataSource
-    private lateinit var navigator: AppNavigator
+  /*  private lateinit var logger: LoggerLocalDataSource
+    private lateinit var navigator: AppNavigator*/
+
+    //@Inject lateinit var logger: LoggerLocalDataSource
+    @InMemoryLogger
+    @Inject lateinit var logger: LoggerDataSource   //  DB 방식을 사용하려면 Qualifier를 @DatabaseLogger 로 변경해서 사용하면 된다!!!!
+    @Inject lateinit var navigator: AppNavigator  //
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +56,7 @@ class ButtonsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_buttons, container, false)
     }
 
-    override fun onAttach(context: Context) {
+    /*override fun onAttach(context: Context) {
         super.onAttach(context)
 
         populateFields(context)
@@ -57,7 +68,7 @@ class ButtonsFragment : Fragment() {
 
         navigator = (context.applicationContext as LogApplication).
             serviceLocator.provideNavigator(requireActivity())
-    }
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.findViewById<Button>(R.id.button1).setOnClickListener {
