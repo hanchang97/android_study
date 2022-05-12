@@ -44,10 +44,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                intFlow.collect {
+                    Log.d("AppTest", "intFlow4 : ${it}")
+                }
+            }
+        } // 백그라운드 전환되었다가 다시 포그라운드 복귀 시 처음부터 collect !!
+
 
         lifecycleScope.launchWhenStarted {
             intFlow.collect {
-                Log.d("AppTest", "intFlow4 : ${it}")
+                Log.d("AppTest", "intFlow5 : ${it}")
             }
         }
     }
