@@ -1,2 +1,4 @@
 # interactive-expanding-appbar
- An example of how you can put widgets in the appbar which also respond to the collapse / expand state changes
+ 
+ - 출처 : https://github.com/dzolnai/interactive-expanding-appbar
+ - https://www.egeniq.com/blog/creating-interactive-and-collapsible-toolbar-android
