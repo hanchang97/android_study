@@ -115,6 +115,21 @@ fun MyStudy() {
         ) {
             Text(text = "Go To LazyRow")
         }
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(10.dp)
+        )
+
+        Button(
+            onClick = {
+                context.startActivity(Intent(context, LazyHorizontalGridActivity::class.java))
+            },
+            modifier = Modifier.align(CenterHorizontally)
+        ) {
+            Text(text = "Go To LazyHorizontalGrid")
+        }
     }
 }
 

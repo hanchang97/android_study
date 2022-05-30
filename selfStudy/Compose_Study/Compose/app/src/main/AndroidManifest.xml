@@ -23,6 +23,7 @@
         <activity android:name=".SecondActivity"/>
         <activity android:name=".LazyColumnActivity"/>
         <activity android:name=".LazyRowActivity"/>
+        <activity android:name=".LazyHorizontalGridActivity"/>
     </application>
 
 </manifest>
