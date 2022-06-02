@@ -7,16 +7,56 @@
     tools:context=".MainActivity">
 
 
-
     <com.stfalcon.pricerangebar.RangeBarWithChart
         android:id="@+id/rangeBarWithChart"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_leftpin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rangeBarWithChart"
+        app:layout_constraintWidth_percent="0.9">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_leftpin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:hint="최저 요금"
+            android:textColor="#333333"
+            android:textColorHint="#4F4F4F" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_rightpin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_leftpin"
+        app:layout_constraintWidth_percent="0.9">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_rightpin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:hint="최고 요금"
+            android:textColor="#333333"
+            android:textColorHint="#4F4F4F" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
