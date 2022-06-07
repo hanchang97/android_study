@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val btn = findViewById<Button>(R.id.btn_custom_broadcast)
         btn.setOnClickListener {
             val intent = Intent("example.broadcast.custom.test")
-            //intent.setAction("example.broadcast.custom.test")
+            intent.setAction("example.broadcast.custom.test").setPackage("com.hanchang97.screenonoff") // setPackage 까지 해야 동작!!!
             sendBroadcast(intent)
         }
     }
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         val filter = IntentFilter()
         filter.addAction(Intent.ACTION_SCREEN_ON)
         filter.addAction(Intent.ACTION_SCREEN_OFF)
-        filter.addAction("example.broadcast.custom.test")
+        //filter.addAction("example.broadcast.custom.test")  //
         registerReceiver(br, filter)
     }
 
