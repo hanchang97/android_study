@@ -13,11 +13,11 @@
 
         <!-- 하단 삭제 view 영역 -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/erase_item_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/erase_item_view"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -44,6 +44,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.25"
+                app:layout_constraintTop_toTopOf="@id/empty_view_1"
+                app:layout_constraintBottom_toBottomOf="@id/empty_view_2"
+                android:visibility="gone">
+
+                <CheckBox
+                    android:id="@+id/checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/empty_view_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cl_checkbox"
+                app:layout_constraintWidth_percent="0.0444"/>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_v_4.44"
@@ -75,7 +105,7 @@
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toTopOf="@id/empty_view_2"
                 app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintStart_toStartOf="@id/gl_v_4.44"
+                app:layout_constraintStart_toEndOf="@id/empty_view_3"
                 app:layout_constraintTop_toBottomOf="@id/empty_view_1"
                 app:layout_constraintWidth_percent="0.25"
                 tools:src="@drawable/ic_launcher_background" />
