@@ -6,3 +6,10 @@
 ---
 
 ![itemtouchhelper2](https://user-images.githubusercontent.com/69443895/173527788-2bef6820-97b3-4921-978d-6e2e5f2d13c9.gif)
+
+
+---
+
+- 삭제 및 체크박스 기능 추가
+
+![itemtouchhelper3](https://user-images.githubusercontent.com/69443895/173640393-90ae7ad5-ac70-46a7-8836-23bf463f3637.gif)
