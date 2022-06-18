@@ -40,10 +40,10 @@ class MainActivity : AppCompatActivity() {
             adapter = rvAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
 
-            /*setOnTouchListener { v, event ->
-
+            setOnTouchListener { v, event ->
+                swipeHelper.removePreviousClamp(this)
                 false
-            }*/
+            }
         }
 
         /// 체크박스 영역 활성화/비활성화 시 번지는? 잔상 효과 없애기 위함
@@ -57,21 +57,16 @@ class MainActivity : AppCompatActivity() {
         rvAdapter.submitList(dataList.toList())
 
         binding.btnBack.setOnClickListener {
-            it.isVisible = false
+            //it.isVisible = false
             itemTouchHelper.attachToRecyclerView(binding.rvData)
             rvAdapter.makeCheckBoxGone()
         }
     }
 
     private fun addData(){
-        dataList.add(MyData(1, "RecyclerView item 1", "https://media.istockphoto.com/vectors/sample-sign-sample-square-speech-bubble-sample-vector-id1161352480?k=20&m=1161352480&s=612x612&w=0&h=uVaVErtcluXjUNbOuvGF2_sSib9dZejwh4w8CwJPc48="))
-        dataList.add(MyData(2, "RecyclerView item 2", "https://media.istockphoto.com/vectors/sample-sign-sample-square-speech-bubble-sample-vector-id1161352480?k=20&m=1161352480&s=612x612&w=0&h=uVaVErtcluXjUNbOuvGF2_sSib9dZejwh4w8CwJPc48="))
-        dataList.add(MyData(3, "RecyclerView item 3", "https://media.istockphoto.com/vectors/sample-sign-sample-square-speech-bubble-sample-vector-id1161352480?k=20&m=1161352480&s=612x612&w=0&h=uVaVErtcluXjUNbOuvGF2_sSib9dZejwh4w8CwJPc48="))
-        dataList.add(MyData(4, "RecyclerView item 4", "https://media.istockphoto.com/vectors/sample-sign-sample-square-speech-bubble-sample-vector-id1161352480?k=20&m=1161352480&s=612x612&w=0&h=uVaVErtcluXjUNbOuvGF2_sSib9dZejwh4w8CwJPc48="))
-        dataList.add(MyData(5, "RecyclerView item 5", "https://media.istockphoto.com/vectors/sample-sign-sample-square-speech-bubble-sample-vector-id1161352480?k=20&m=1161352480&s=612x612&w=0&h=uVaVErtcluXjUNbOuvGF2_sSib9dZejwh4w8CwJPc48="))
-        dataList.add(MyData(6, "RecyclerView item 6", "https://media.istockphoto.com/vectors/sample-sign-sample-square-speech-bubble-sample-vector-id1161352480?k=20&m=1161352480&s=612x612&w=0&h=uVaVErtcluXjUNbOuvGF2_sSib9dZejwh4w8CwJPc48="))
-        dataList.add(MyData(7, "RecyclerView item 7", "https://media.istockphoto.com/vectors/sample-sign-sample-square-speech-bubble-sample-vector-id1161352480?k=20&m=1161352480&s=612x612&w=0&h=uVaVErtcluXjUNbOuvGF2_sSib9dZejwh4w8CwJPc48="))
-
+        for(i in 1..20){
+            dataList.add(MyData(i, "RecyclerView item $i", "https://media.istockphoto.com/vectors/sample-sign-sample-square-speech-bubble-sample-vector-id1161352480?k=20&m=1161352480&s=612x612&w=0&h=uVaVErtcluXjUNbOuvGF2_sSib9dZejwh4w8CwJPc48="))
+        }
     }
 
 

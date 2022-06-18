@@ -177,7 +177,9 @@ class SwipeHelper: ItemTouchHelper.Callback() {  // ItemTouchHelper.Callback 을
         previousPosition?.let {
             val viewHolder = recyclerView.findViewHolderForAdapterPosition(it) ?: return
             getView(viewHolder).translationX = 0f
-            setTag(viewHolder, false)
+            //setTag(viewHolder, false)
+
+            setClamped(viewHolder as RvAdapter.MyDataViewHolder, false)
             previousPosition = null
         }
     }

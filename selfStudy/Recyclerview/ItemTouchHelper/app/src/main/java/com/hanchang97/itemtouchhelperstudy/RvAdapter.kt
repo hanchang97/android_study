@@ -20,7 +20,9 @@ class RvAdapter(private val longClick: () -> Unit): ListAdapter<MyData, RvAdapte
             binding.tvTextView.text = myData.content
             binding.ivImage.load(myData.imgUrl)
 
-            binding.swipeView.translationX = 0f // 스와이프 된 상태의 뷰가 재활용 될 수 있으므로
+            // 뷰홀더 재사용 과정에서 isClamped 값에 맞지 않는 스와이프 상태가 보일 수 있으므로 아래와 같이 명시적으로 isClamped 값에 따라 스와이프 상태 지정
+            if(myData.isClamped) binding.swipeView.translationX = binding.root.width * -1f / 10 * 3
+            else binding.swipeView.translationX = 0f
 
             binding.eraseItemView.setOnClickListener {
                 if(myData.isClamped) removeItem(adapterPosition)
