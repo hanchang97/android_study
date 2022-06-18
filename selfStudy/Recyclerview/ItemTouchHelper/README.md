@@ -13,3 +13,13 @@
 - 삭제 및 체크박스 기능 추가
 
 ![itemtouchhelper3](https://user-images.githubusercontent.com/69443895/173640393-90ae7ad5-ac70-46a7-8836-23bf463f3637.gif)
+
+---
+<br>
+
+### 2022 06 18 수정
+
+- 한 번에 한 아이템만 스와이프 상태 유지 가능하도록 수정
+- 아이템 별 스와이프 여부를 tag 값으로 관리한 부분 수정 -> 리사이클러뷰 데이터 클래스에 스와이프가 되었는지를 따로 데이터로 가지고 있도록 수정
+
+![itemtouchhelper4](https://user-images.githubusercontent.com/69443895/174437483-fdc1f880-c8b0-4be1-b371-7593fb3165b9.gif)
