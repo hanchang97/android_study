@@ -22,7 +22,8 @@ class MyPageFragment: Fragment() {
     ): View? {
         PrintLog.printLog("MyPageFragment / onCreateView")
 
-        FragmentNumber.FRAGMENT_NUMBER = 3
+        FragmentNumber.FRAGMENT_NUMBER = 3 //
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_mypage, container, false)
         return binding.root
     }

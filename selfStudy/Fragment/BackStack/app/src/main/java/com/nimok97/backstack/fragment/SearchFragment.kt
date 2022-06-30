@@ -22,7 +22,8 @@ class SearchFragment: Fragment() {
     ): View? {
         PrintLog.printLog("SearchFragment / onCreateView")
 
-        FragmentNumber.FRAGMENT_NUMBER = 2
+        FragmentNumber.FRAGMENT_NUMBER = 2    //
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
         return binding.root
     }
@@ -31,6 +32,7 @@ class SearchFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         PrintLog.printLog("SearchFragment / onViewCreated")
 
+        // Search2Fragment 로 이동
         binding.btnSearch.setOnClickListener {
             parentFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, Search2Fragment())
                 .addToBackStack(null)

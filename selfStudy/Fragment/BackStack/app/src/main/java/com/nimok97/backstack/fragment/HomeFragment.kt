@@ -22,7 +22,8 @@ class HomeFragment: Fragment() {
     ): View? {
         PrintLog.printLog("HomeFragment / onCreateView")
 
-        FragmentNumber.FRAGMENT_NUMBER = 1
+        FragmentNumber.FRAGMENT_NUMBER = 1 //
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         return binding.root
     }

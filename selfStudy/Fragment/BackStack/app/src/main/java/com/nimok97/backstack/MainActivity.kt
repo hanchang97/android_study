@@ -80,4 +80,5 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
+    // 전역변수 FRAGMENT_NUMBER 값에 따라 뒤로가기 동작 처리
 }
