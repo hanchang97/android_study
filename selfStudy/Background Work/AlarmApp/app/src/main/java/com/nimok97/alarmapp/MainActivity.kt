@@ -80,13 +80,16 @@ class MainActivity : AppCompatActivity() {
                     PendingIntent.FLAG_UPDATE_CURRENT // 기존 데이터 있으면 새로운 것으로 업데이트
                 )
 
-                alarmManager.setInexactRepeating(
+                // AlarmManager
+                alarmManager.setInexactRepeating( // 반복알람,  but 잠자기 모드에서는 울리지 않음!!
                     AlarmManager.RTC_WAKEUP,
                     calendarAlarm.timeInMillis, // calendarAlarm = 알람 설정 시간
-                    AlarmManager.INTERVAL_DAY,
+                    AlarmManager.INTERVAL_DAY, // 하루 한 번
                     pendingIntent
                 )
                 //  하루에 한 번씩 펜딩인텐트 실행
+
+                // 잠자기 모드에서 실행  =  alarmManager.setAndAllowWhileIdle() 사용한다!!
 
             } else {
                 // 꺼진 경우 -> 알람을 제거
