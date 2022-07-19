@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Win10/Desktop/changhee/kotlin_study/selfStudy/MVVM_Flow_Hilt/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/Win10/Desktop/changhee/kotlin_study/selfStudy/MVVM_Flow_Hilt/app/src/main/res/layout/item_recyclerview.xml" value="0.36614583333333334" />
+        <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.1735" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2677083333333333" />
+        <entry key="app/src/main/res/layout/item_rv.xml" value="0.28177083333333336" />
       </map>
     </option>
   </component>
