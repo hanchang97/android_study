@@ -74,7 +74,7 @@ fun MyStudy() {
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(2 / 1f)
+                .aspectRatio(3 / 1f)
         )
 
         Button(
@@ -130,6 +130,22 @@ fun MyStudy() {
         ) {
             Text(text = "Go To LazyHorizontalGrid")
         }
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(10.dp)
+        )
+
+        Button(
+            onClick = {
+                context.startActivity(Intent(context, LazyColumnWithHeaderActivity::class.java))
+            },
+            modifier = Modifier.align(CenterHorizontally)
+        ) {
+            Text(text = "Go To LazyColumn with Header")
+        }
+
     }
 }
 
